@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="shortcut" href="favicon.png">
+  <style>
+    body {
+      background: #f1f5f9;
+    }
+    .register-container {
+      margin-top: 80px; /* navbar ke niche thoda gap */
+      margin-bottom: 50px;
+    }
+    .register-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h3 {
+      color: #003366;
+    }
+    .btn-primary {
+      background-color: #003366;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #00509e;
+    }
+    .navbar {
+      background-color: #003366;
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+    }
+    footer {
+      background: #003366;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">IRCTC</a>
+      <buttom class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon bg-light"></span>
+      </buttom>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+          <!-- Dropdown for Trains -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="trainsDropdown" role="button" data-bs-toggle="dropdown">
+              Trains
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="bookticket.html">Book Ticket</a></li>
+              <li><a class="dropdown-item" href="PNRstatus.html">PNR Status</a></li>
+              <li><a class="dropdown-item" href="trainSchedule.html">Train Schedule</a></li>
+              <li><a class="dropdown-item" href="Availability.html">Seat Availability</a></li>
+              <li><a class="dropdown-item" href="fare.html">Fare Enquiry</a></li>
+              <li><a class="dropdown-item" href="#">Cancel Ticket</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Register Form -->
+  <div class="container register-container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 register-box">
+        <h3 class="text-center mb-4">Registration</h3>
+        <form>
+          <div class="row g-3">
+            <!-- Username -->
+            <div class="col-md-6">
+              <label class="form-label">Username</label>
+              <input type="text" class="form-control" placeholder="Choose Username">
+            </div>
+            <!-- Email -->
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" placeholder="Enter Email">
+            </div>
+            <!-- Password -->
+            <div class="col-md-6">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" placeholder="Enter Password">
+            </div>
+            <!-- Confirm Password -->
+            <div class="col-md-6">
+              <label class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" placeholder="Re-enter Password">
+            </div>
+            <!-- First Name -->
+            <div class="col-md-6">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-control" placeholder="Enter First Name">
+            </div>
+            <!-- Last Name -->
+            <div class="col-md-6">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-control" placeholder="Enter Last Name">
+            </div>
+            <!-- Gender -->
+            <div class="col-md-6">
+              <label class="form-label">Gender</label>
+              <select class="form-select">
+                <option selected disabled>Choose...</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <!-- Date of Birth -->
+            <div class="col-md-6">
+              <label class="form-label">Date of Birth</label>
+              <input type="date" class="form-control">
+            </div>
+            <!-- Mobile -->
+            <div class="col-md-6">
+              <label class="form-label">Mobile Number</label>
+              <input type="text" class="form-control" placeholder="Enter Mobile No.">
+            </div>
+            <!-- Nationality -->
+            <div class="col-md-6">
+              <label class="form-label">Nationality</label>
+              <select class="form-select">
+                <option>Indian</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <!-- Address -->
+            <div class="col-12">
+              <label class="form-label">Address</label>
+              <textarea class="form-control" rows="2" placeholder="Enter Address"></textarea>
+            </div>
+            <!-- Checkbox -->
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label">I agree to the Terms & Conditions</label>
+              </div>
+            </div>
+            <!-- Submit -->
+            <div class="col-12 text-center mt-3">
+              <button type="submit" class="btn btn-primary px-5">Register</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 IRCTC Clone Project | Made with ❤️ Rohit & Soni</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
