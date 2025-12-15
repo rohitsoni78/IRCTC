@@ -1,177 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register Form</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="icon" type="shortcut" href="favicon.png">
   <style>
+    :root {
+      --brand-dark: #003366;
+      --accent: #ffcc00;
+      --glass-bg: rgba(255, 255, 255, 0.12);
+      --glass-border: rgba(255, 255, 255, 0.2);
+    }
+
     body {
-      background: #f1f5f9;
-    }
-    .register-container {
-      margin-top: 80px; /* navbar ke niche thoda gap */
-      margin-bottom: 50px;
-    }
-    .register-box {
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    h3 {
-      color: #003366;
-    }
-    .btn-primary {
-      background-color: #003366;
-      border: none;
-    }
-    .btn-primary:hover {
-      background-color: #00509e;
-    }
-    .navbar {
-      background-color: #003366;
-    }
-    .navbar-brand, .nav-link {
-      color: #fff !important;
-    }
-    footer {
-      background: #003366;
+      height: 100%;
+      margin: 0;
+      font-family: "Inter", system-ui,
+        -apple-system, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(135deg, #b1c40b 0%, #7a003f 50%, #f0bc0e 100%);
       color: #fff;
-      text-align: center;
-      padding: 10px 0;
+    }
+
+    .site-navbar {
+      background: linear-gradient(90deg, rgba(185, 16, 16, 0.18), rgba(0, 0, 0, 0.05));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 6px 20px rgb(255, 0, 0);
+
+    }
+
+    .nav-logo {
+      height: 42px;
+      width: auto;
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .nav-link {
+      color: rgba(225, 232, 9, 0.9) !important;
+      margin-left: .3rem;
+      margin-right: .3rem;
+    }
+
+
+    .ticket {
       position: relative;
-      bottom: 0;
+      min-height: calc(100vh - 140px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      overflow: hidden;
+    }
+
+    .ticket::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('https://picsum.photos/1200/800');
+      background-size: cover;
+      background-position: center;
+      filter: blur(6px) brightness(0.5) saturate(110%);
+      transform: scale(1.06);
+      z-index: 0;
+    }
+
+    .ticket::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 20, 40, 0.25), rgba(0, 10, 20, 0.45));
+      z-index: 1;
+    }
+
+    .register-card {
+      position: relative;
+      z-index: 2;
       width: 100%;
+      max-width: 980px;
+      display: grid;
+      grid-template-columns: 1fr 40px;
+      gap: 28px;
+      text-align: center;
+      padding: 28px;
+    }
+
+    .soni {
+      padding: 28px;
+      border-radius: 14px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .soni h2 {
+      font-size: 26px;
+      margin: 0;
+      letter-spacing: 0.2px;
+    }
+
+    .soni p {
+      opacity: 0.92;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+
+    .glass {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(2, 8, 23, 0.5);
+
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .brand-title img {
+      height: 44px;
+      width: 44px;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    }
+
+    .brand-title h3 {
+      margin: 0;
+      color: #17160c;
+      font-size: 60px;
+      letter-spacing: 0.3px;
+    }
+
+    .form-control {
+      border-radius: 10px;
+      height: 48px;
+      border: "";
+      padding-left: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: bold;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 0 4px rgba(0, 120, 180, 0.08);
+      outline: none;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), #ffd94d);
+      color: var(--brand-dark);
+      font-weight: 700;
+      border-radius: 10px;
+      border: none;
+      height: 48px;
+      box-shadow: 0 8px 26px rgba(3, 19, 40, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .small-note {
+      font-size: 16px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+
+    footer.site-footer {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.12));
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 28px 18px;
+      color: #fff;
+    }
+
+    .footer-gallery img {
+      width: 64px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      margin-right: 8px;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    @media (max-width: 920px) {
+      .register-card {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+        padding: 18px;
+        gap: 18px;
+      }
+
+      .ticket {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top">
+  <nav class="navbar navbar-expand-lg site-navbar">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">IRCTC</a>
-      <buttom class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon bg-light"></span>
-      </buttom>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <span class="ms-2 fw-bold" style="color:#fff;">IRCTC</span>
+      </a>
+
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon">
+          <i class="bi bi-list" style="font-size:20px;"></i>
+        </span>
+
+      </button>
+
+      <div class="collapse navbar-collapse fw-bold" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-          <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
-          <!-- Dropdown for Trains -->
+          <li class="nav-item"><a class="nav-link active" href="registerform.html">Register</a></li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="trainsDropdown" role="button" data-bs-toggle="dropdown">
-              Trains
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="bookticket.html">Book Ticket</a></li>
-              <li><a class="dropdown-item" href="PNRstatus.html">PNR Status</a></li>
-              <li><a class="dropdown-item" href="trainSchedule.html">Train Schedule</a></li>
-              <li><a class="dropdown-item" href="Availability.html">Seat Availability</a></li>
-              <li><a class="dropdown-item" href="fare.html">Fare Enquiry</a></li>
-              <li><a class="dropdown-item" href="#">Cancel Ticket</a></li>
+            <a class="nav-link dropdown-toggle" href="#" id="trainsDropdown" role="button"
+              data-bs-toggle="dropdown">Trains</a>
+            <ul class="dropdown-menu ">
+              <li><a class="dropdown-item fw-bold" href="bookticket.html">Book Ticket</a></li>
+              <li><a class="dropdown-item fw-bold" href="PNRstatus.html">PNR Status</a></li>
+
             </ul>
+          </li>
+          <li class="nav-item ms-3">
+            <a class="btn btn-sm fw-bold btn-warning text-dark" href="bookticket.html">Book Now</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Register Form -->
-  <div class="container register-container">
-    <div class="row justify-content-center">
-      <div class="col-lg-6 col-md-8 register-box">
-        <h3 class="text-center mb-4">Registration</h3>
-        <form>
-          <div class="row g-3">
-            <!-- Username -->
-            <div class="col-md-6">
-              <label class="form-label">Username</label>
-              <input type="text" class="form-control" placeholder="Choose Username">
-            </div>
-            <!-- Email -->
-            <div class="col-md-6">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" placeholder="Enter Email">
-            </div>
-            <!-- Password -->
-            <div class="col-md-6">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-control" placeholder="Enter Password">
-            </div>
-            <!-- Confirm Password -->
-            <div class="col-md-6">
-              <label class="form-label">Confirm Password</label>
-              <input type="password" class="form-control" placeholder="Re-enter Password">
-            </div>
-            <!-- First Name -->
-            <div class="col-md-6">
-              <label class="form-label">First Name</label>
-              <input type="text" class="form-control" placeholder="Enter First Name">
-            </div>
-            <!-- Last Name -->
-            <div class="col-md-6">
-              <label class="form-label">Last Name</label>
-              <input type="text" class="form-control" placeholder="Enter Last Name">
-            </div>
-            <!-- Gender -->
-            <div class="col-md-6">
-              <label class="form-label">Gender</label>
-              <select class="form-select">
-                <option selected disabled>Choose...</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <!-- Date of Birth -->
-            <div class="col-md-6">
-              <label class="form-label">Date of Birth</label>
-              <input type="date" class="form-control">
-            </div>
-            <!-- Mobile -->
-            <div class="col-md-6">
-              <label class="form-label">Mobile Number</label>
-              <input type="text" class="form-control" placeholder="Enter Mobile No.">
-            </div>
-            <!-- Nationality -->
-            <div class="col-md-6">
-              <label class="form-label">Nationality</label>
-              <select class="form-select">
-                <option>Indian</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <!-- Address -->
-            <div class="col-12">
-              <label class="form-label">Address</label>
-              <textarea class="form-control" rows="2" placeholder="Enter Address"></textarea>
-            </div>
-            <!-- Checkbox -->
-            <div class="col-12">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox">
-                <label class="form-check-label">I agree to the Terms & Conditions</label>
-              </div>
-            </div>
-            <!-- Submit -->
-            <div class="col-12 text-center mt-3">
-              <button type="submit" class="btn btn-primary px-5">Register</button>
-            </div>
+  <main class="ticket">
+    <div class="register-card">
+
+      <div class="glass">
+        <div class="brand-title">
+          <div style="box-shadow: #ffcc00;">
+            <h3>Register</h3>
+            <div style="font-size:20px; opacity:0.9; text-align: center;" class="small-note">Fill details to create your
+              account</div>
           </div>
+        </div>
+
+        <form id="registerForm">
+          <div class="mb-3">
+            <label class="form-label small-note">Full Name</label>
+            <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small-note">Username</label>
+            <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small-note">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Enter your your Gamil" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small-note">Mobile</label>
+            <input type="tel" id="mobile" class="form-control" placeholder="Enter you mobile number" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small-note">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Create a password" required>
+          </div>
+
+
+          <div class="mb-3">
+            <label class="form-label small-note">Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="rememberMe">
+            <label class="form-check-label small-note" for="rememberMe">Remember Me</label>
+          </div> <br>
+
+          <div class="d-grid mb-2">
+            <button type="submit" class="btn btn-primary">Create Account</button>
+          </div>
+
+          <div class="text-center small-note">Already have an account? <a href="login.html">Login</a></div>
         </form>
       </div>
-    </div>
-  </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 IRCTC Clone Project | Made with ❤️ Rohit & Soni</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+        <div class="col-md-4">
+          <h5 style="color:#fff;">About </h5>
+          <p class="small-note">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus repellat asperiores quisquam fuga
+            quaerat unde? Libero, ea quisquam officia, praesentium atque assumenda, consequuntur exercitationem delectus
+            laborum sequi animi consectetur qui.
+          </p>
+
+          <div class="mt-3">
+            <a class="social-btn" href="#"><i class="bi bi-facebook"></i></a>
+            <a class="social-btn" href="#"><i class="bi bi-twitter"></i></a>
+            <a class="social-btn" href="#"><i class="bi bi-instagram"></i></a>
+            <a class="social-btn" href="#"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <h6 style="color:#fff;">Quick Links</h6>
+          <ul class="small-note" style="list-style:none;padding-left:0;">
+            <li><a href="bookticket.html">Book Ticket</a></li>
+            <li><a href="PNRstatus.html">PNR Status</a></li>
+            <li><a href="trainSchedule.html">Train Schedule</a></li>
+            <li><a href="Availability.html">Seat Availability</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4">
+          <h6 style="color:#fff;"> Contact</h6>
+          <div class="small-note "> <a href="#">support@irctc.com | +91 78228 36602</a> </div>
+        </div>
+      </div>
+
+      <hr style="border-color: rgba(255,255,255,0.06); margin:20px 0;">
+      <div class="d-flex justify-content-between  align-items-center small-note">
+        <div>&copy; 2025 IRCTC | Made with ❤️ by Rohit Soni</div>
+      </div>
+    </div>
   </footer>
 
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script>
+    const registerForm = document.getElementById('registerForm');
+
+    function isValidEmail(email) {
+      return /^\S+@\S+\.\S+$/.test(email);
+    }
+    function isValidMobile(mobile) {
+      return /^[6-9]\d{9}$/.test(mobile);
+    }
+
+    registerForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const fullName = document.getElementById('fullName').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim().toLowerCase();
+      const mobile = document.getElementById('mobile').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      // Basic validations (mirrors login page behavior)
+      if (!fullName || !username || !email || !mobile || !password || !confirmPassword) {
+        alert('Please fill all required fields.');
+        return;
+      }
+      if (!isValidEmail(email)) {
+        alert('Enter a valid email address.');
+        return;
+      }
+      if (!isValidMobile(mobile)) {
+        alert('Enter a valid 10-digit Indian mobile number.');
+        return;
+      }
+      if (password.length < 6) {
+        alert('Password should be at least 6 characters.');
+        return;
+      }
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+      }
+
+      const userData = { fullName, username, email, mobile, password };
+      localStorage.setItem('userData', JSON.stringify(userData));
+
+      alert('Registration successful! You can now login.');
+      window.location.href = 'login.html';
+    });
+  </script>
 </body>
+
 </html>
