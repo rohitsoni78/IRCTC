@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRCTC Railway Booking</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui;
+      background-color: #f4f6f9;
+    }
+
+    .site-navbar {
+      background: linear-gradient(90deg,
+          #7b0038 0%,
+          #8e1b3f 30%,
+          #a44a2a 60%,
+          #d19a18 100%);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .site-navbar .navbar-brand,
+    .site-navbar .nav-link {
+      color: #ffffff !important;
+      font-weight: 700;
+    }
+
+    .site-navbar .nav-link:hover,
+    .site-navbar .nav-link:focus {
+      color: #ffe082 !important;
+    }
+
+    .site-navbar .dropdown-menu {
+      background: rgba(0, 0, 0, 0.85);
+      border: none;
+    }
+
+    .site-navbar .dropdown-item {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .site-navbar .dropdown-item:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffe082;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url("https://picsum.photos/1200/1080") no-repeat center/cover;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 140px;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      width: 100%;
+    }
+
+    .booking-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    .form-control,
+    .form-select {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      height: 48px;
+      font-weight: 600;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid #ffcc00;
+      box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.25);
+      color: #fff;
+    }
+
+    .form-select option {
+      color: #000;
+      font-weight: bold;
+    }
+
+    .travel-card {
+      border: none;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s;
+    }
+
+    .travel-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .travel-card img {
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .site-footer {
+      background: linear-gradient(90deg,
+          #7b0038 0%,
+          #8e1b3f 30%,
+          #a44a2a 60%,
+          #d19a18 100%);
+      padding: 40px 20px 25px;
+      color: #ffffff;
+    }
+
+    .site-footer h5,
+    .site-footer h6 {
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .site-footer p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .site-footer a {
+      color: #1e90ff;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .site-footer a:hover {
+      color: #ffffff;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .footer-bottom {
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg site-navbar">
+    <div class="container">
+
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="IRCTC-Logo.png" alt="IRCTC Logo" width="50" height="45">
+        IRCTC
+      </a>
+
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <i class="bi bi-list fs-4"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-center fw-bold">
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Login</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="registerform.html">Register</a>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="trainsDropdown" role="button" data-bs-toggle="dropdown">
+              Trains
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="dashboard.html">Dashboard</a></li>
+              <li><a class="dropdown-item" href="bookticket.html">Book Ticket</a></li>
+              <li><a class="dropdown-item" href="PNRstatus.html">PNR Status</a></li>
+              <li><a class="dropdown-item" href="trainSchedule.html">Train Schedule</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item ms-3">
+            <a class="btn btn-sm btn-warning fw-bold text-dark" href="bookticket.html">
+              Book Now
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content container">
+      <div class="text-center mb-4">
+        <h1 class="fw-bold">Book Train Tickets Easily</h1>
+        <p>Safe • Fast • Reliable Railway Journey</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-10 booking-box">
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="From Station">
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="To Station">
+              </div>
+              <div class="col-md-4">
+                <input type="date" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <select class="form-select">
+                  <option>All Classes</option>
+                  <option>Sleeper</option>
+                  <option>3AC</option>
+                  <option>2AC</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <select class="form-select">
+                  <option>General</option>
+                  <option>Tatkal</option>
+                  <option>Ladies</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-warning w-100 fw-bold mt-2">
+                  <i class="bi bi-search"></i> Search Trains
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container my-5">
+    <h3 class="text-center fw-bold mb-4">Popular Train Journeys</h3>
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="card travel-card"><img src="https://picsum.photos/seed/rail1/400/250">
+          <div class="card-body">
+            <h5>Delhi to Jaipur</h5>
+            <p>Royal Rajasthan journey.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card travel-card"><img src="https://picsum.photos/seed/rail2/400/250">
+          <div class="card-body">
+            <h5>Mumbai to Goa</h5>
+            <p>Scenic Konkan route.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card travel-card"><img src="https://picsum.photos/seed/rail3/400/250">
+          <div class="card-body">
+            <h5>Kolkata to Darjeeling</h5>
+            <p>Himalayan views.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card travel-card"><img src="https://picsum.photos/seed/rail4/400/250">
+          <div class="card-body">
+            <h5>Delhi to Varanasi</h5>
+            <p>Spiritual journey.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card travel-card"><img src="https://picsum.photos/seed/rail5/400/250">
+          <div class="card-body">
+            <h5>Chennai to Bangalore</h5>
+            <p>Fast & comfortable.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card travel-card"><img src="https://picsum.photos/seed/rail6/400/250">
+          <div class="card-body">
+            <h5>Mumbai to Delhi</h5>
+            <p>Capital express route.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card travel-card"><img src="https://picsum.photos/seed/rail7/400/250">
+          <div class="card-body">
+            <h5>Hyderabad to Tirupati</h5>
+            <p>Devotional trip.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card travel-card"><img src="https://picsum.photos/seed/rail8/400/250">
+          <div class="card-body">
+            <h5>Pune to Mumbai</h5>
+            <p>Daily commuter route.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card travel-card"><img src="https://picsum.photos/seed/rail9/400/250">
+          <div class="card-body">
+            <h5>Jaipur to Jodhpur</h5>
+            <p>Desert beauty ride.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card travel-card"><img src="https://picsum.photos/seed/rail10/400/250">
+          <div class="card-body">
+            <h5>Delhi to Amritsar</h5>
+            <p>Golden Temple route.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card travel-card"><img src="https://picsum.photos/seed/rail11/400/250">
+          <div class="card-body">
+            <h5>Patna to Ranchi</h5>
+            <p>Eastern scenic ride.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card travel-card"><img src="https://picsum.photos/seed/rail12/400/250">
+          <div class="card-body">
+            <h5>Bhopal to Indore</h5>
+            <p>Short comfort trip.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+
+
+        <div class="col-md-4">
+          <h5>About</h5>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Temporibus repellat asperiores quisquam fuga quaerat unde?
+            Libero, ea quisquam officia, praesentium atque assumenda,
+            consequuntur exercitationem delectus laborum sequi animi
+            consectetur qui.
+          </p>
+
+          <div class="footer-social mt-3">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+
+        <div class="col-md-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="bookticket.html">Book Ticket</a></li>
+            <li><a href="PNRstatus.html">PNR Status</a></li>
+            <li><a href="trainSchedule.html">Train Schedule</a></li>
+            <li><a href="Availability.html">Seat Availability</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Contact</h5>
+          <p>
+            <a href="mailto:support@irctc.com">support@irctc.com</a> |
+            <a href="tel:+917822836602">+91 78228 36602</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom text-center mt-4">
+        &copy; 2025 IRCTC | Made with ❤️ by Rohit Soni
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
