@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRCTC Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="shortcut" href="favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-navbar {
+      background: linear-gradient(90deg,
+          #6f0030,
+          #8b1d3d,
+          #a64b2a,
+          #c27a1a,
+          #d59a12);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .sidebar {
+      background: #fff;
+      min-height: calc(100vh - 56px);
+      border-right: 1px solid #e2e8f0;
+    }
+
+    .sidebar .nav-link {
+      color: #1e293b !important;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .sidebar .nav-link.active,
+    .sidebar .nav-link:hover {
+      background: linear-gradient(90deg, #7a003f, #f0bc0e);
+      color: #fff !important;
+    }
+
+    .dashboard-container {
+      margin-top: 56px;
+      flex: 1;
+    }
+
+    .stat-card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+    }
+
+    .irctc-footer {
+      background: linear-gradient(90deg, #6f0030, #8b1d3d, #a64b2a, #c27a1a, #d59a12);
+      color: #fff;
+      padding: 45px 0 20px;
+      margin-top: auto;
+    }
+
+    .irctc-footer h5 {
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .irctc-footer p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a,
+    .contact-text a {
+      color: #00aaff;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    .footer-links a:hover,
+    .contact-text a:hover {
+      color: #fff;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .12);
+      margin-right: 10px;
+      color: #fff;
+      transition: .3s;
+    }
+
+    .social-icons a:hover {
+      background: rgba(255, 255, 255, .25);
+      transform: translateY(-3px);
+    }
+
+    .irctc-footer hr {
+      border-color: rgba(255, 255, 255, .25);
+      margin: 25px 0 15px;
+    }
+
+    .copyright {
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top site-navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold ms-3" href="index.html"> <img src="IRCTC-Logo.png" alt="IRCTC Logo" width="50"
+          height="45"></a>
+      <div class="ms-auto me-4 d-flex align-items-center">
+        <span class="navbar-text fw-bold me-3">
+          Welcome, <span id="userName">User</span>
+        </span>
+        <div class="dropdown">
+          <a class="nav-link fw-bold dropdown-toggle" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle "></i> Account
+          </a>
+          <ul class="dropdown-menu  dropdown-menu-end">
+            <li><button class="dropdown-item" id="btnLogout">Logout</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid dashboard-container">
+    <div class="row">
+      <aside class="col-lg-2 col-md-3 sidebar p-3">
+        <a class="nav-link active" href="dashboard.html">MENU</a>
+        <a class="nav-link" href="bookticket.html">Book Ticket</a>
+        <a class="nav-link" href="PNRstatus.html">PNR Status</a>
+        <a class="nav-link" href="Availability.html">Seat Availability</a>
+        <a class="nav-link" href="fare.html">Fare Enquiry</a>
+        <a class="nav-link" href="trainSchedule.html">Train Schedule</a>
+        <a class="nav-link" href="cancelTicket.html">Cancel Ticket</a>
+      </aside>
+      <main class="col-lg-10 col-md-9 fw-bold p-4">
+        <h3>WELCOME</h3>
+        <p class="text-muted">Your railway journey at a glance</p>
+        <div class="row g-3">
+          <div class="col-md-3 col-6">
+            <div class="card stat-card p-3">
+              <p>Upcoming</p>
+              <h4>2</h4>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="card stat-card p-3">
+              <p>Completed</p>
+              <h4>5</h4>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="card stat-card p-3">
+              <p>Cancelled</p>
+              <h4>1</h4>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="card stat-card p-3">
+              <p>Wallet</p>
+              <h4>₹ 750</h4>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <footer class="irctc-footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-4">
+          <h5>About</h5>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Temporibus repellat asperiores quisquam fuga quaerat unde?
+            Libero, ea quisquam officia.
+          </p>
+          <div class="social-icons mt-3">
+            <a><i class="bi bi-facebook"></i></a>
+            <a><i class="bi bi-twitter"></i></a>
+            <a><i class="bi bi-instagram"></i></a>
+            <a><i class="bi bi-youtube"></i></a>
+            <a><i class="bi bi-github"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="bookticket.html">Book Ticket</a></li>
+            <li><a href="PNRstatus.html">PNR Status</a></li>
+            <li><a href="trainSchedule.html">Train Schedule</a></li>
+            <li><a href="Availability.html">Seat Availability</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Contact</h5>
+          <p class="contact-text">
+            <a href="mailto:support@irctc.com">support@irctc.com</a><br>
+            <a href="tel:+917822836602">+91 78228 36602</a>
+          </p>
+        </div>
+      </div>
+      <hr>
+      <div class="text-center copyright">
+        &copy; 2025 IRCTC | Made with ❤️ by Rohit Soni
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const user = localStorage.getItem("loggedUser");
+    if (!user) { window.location.href = "login.html"; }
+    document.getElementById("userName").textContent = user;
+    document.getElementById("btnLogout").onclick = () => {
+      localStorage.clear();
+      window.location.href = "login.html";
+    };
+  </script>
+</body>
+
+</html>
